@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div style="text-align:center; margin-top:40px;">
+    {% if product.barcode_image %}
+        <img src="{{ product.barcode_image.url }}" alt="Barcode" style="max-width:250px;">
+    {% endif %}
+    <p>{{ product.name }}</p>
+    <p>{{ product.barcode }}</p>
+</div>
+
+<script>
+    window.onload = function () {
+        window.print();
+    };
+</script>
+{% endblock %}
+
+

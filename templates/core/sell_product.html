@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+<label>Scan or type barcode</label>
+<input type="text" id="scan-barcode" class="form-control" placeholder="Scan barcode">
+
+<div id="product-info"></div>
+
+<script>
+document.getElementById("scan-barcode").addEventListener("input", function() {
+    let code = this.value;
+
+    if (code.length > 3) {
+        fetch(`/api/get-product/${code}/`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.found) {
+                document.getElementById("product-info").innerHTML = `
+                    <h4>${data.name}</h4>
+                    <p>Category: ${data.category}</p>
+                    <p>Available: ${data.quantity}</p>
+                `;
+            } else {
+                document.getElementById("product-info").innerHTML = `<p class="text-danger">Product not found</p>`;
+            }
+        });
+    }
+});
+</script>
+
+<div class="card shadow-sm p-4" style="font: bolder; background: whitesmoke;">
+  <h3>Sell product — {{ tracker.name }}</h3>
+  <form method="post" id="sell-form">{% csrf_token %}
+    <div class="mb-3">
+      {{ form.product.label_tag }} {{ form.product }}
+    </div>
+    <div class="mb-3">
+      {{ form.quantity.label_tag }} {{ form.quantity }}
+    </div>
+
+    <div class="alert alert-secondary" style="font: bolder; background: whitesmoke;">
+      <div><strong>Product Id:     </strong> <span id="info-id" style="font: bolder; background: whitesmoke; min-width: 15rem;">—</span></div>
+      <div><strong>Category :       </strong> <span id="info-cat" style="font: bolder; background: whitesmoke; min-width: 15rem;">—</span></div>
+      <div><strong>Price    :</strong> <span id="info-price" class="money-field" style="font: bolder; background: whitesmoke; min-width: 15rem;">—</span></div>
+      <div><strong>Units remaining:</strong> <span id="info-rem" style="font: bolder; background: whitesmoke; min-width: 15rem;">—</span></div>
+      <div><strong>Total cost:     </strong> <span id="info-cost" class="money-field" style="font: bolder; background: whitesmoke; min-width: 15rem;">—</span></div>
+    </div>
+
+    <button class="btn btn-success" style="height: 2rem; max-height: 2rem; min-width: 10rem; max-width: 10rem; font-size: large; background: green; margin-left: 30%;">Record sale</button>
+  </form>
+</div>
+
+<script>
+  // Build a map of product details
+    const productData = {
+        {% for p in tracker.products.all %}
+        "{{ p.id }}": {
+            id: "{{ p.product_id }}",
+            category: "{{ p.category }}",
+            price: "{{ p.price }}",
+            remaining: "{{ p.units_remaining }}"
+        },
+        {% endfor %}
+    };
+
+    const select = document.getElementById("id_product");
+    const qty = document.getElementById("id_quantity");
+
+    function updateInfo() {
+        const sel = select.value;
+        const q = parseInt(qty.value || 0);
+        if (productData[sel]) {
+            const d = productData[sel];
+            document.getElementById("info-id").innerText = d.id;
+            document.getElementById("info-cat").innerText = d.category;
+            document.getElementById("info-price").innerText = d.price;
+            document.getElementById("info-rem").innerText = d.remaining;
+        const cost = q * parseFloat(d.price);
+            document.getElementById("info-cost").innerText = isNaN(cost) ? "—" : cost.toFixed(2);
+        }
+    }
+  select.addEventListener('change', updateInfo);
+  qty.addEventListener('input', updateInfo);
+  updateInfo();
+</script>
+<script>
+document.getElementById("scan-barcode").addEventListener("input", function() {
+    let code = this.value;
+
+    if (code.length > 3) {
+        fetch(`/api/get-product/${code}/`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.found) {
+                document.getElementById("product-info").innerHTML = `
+                    <h4>${data.name}</h4>
+                    <p>Category: ${data.category}</p>
+                    <p>Available: ${data.quantity}</p>
+                `;
+            } else {
+                document.getElementById("product-info").innerHTML = `<p class="text-danger">Product not found</p>`;
+            }
+        });
+    }
+});
+</script>
+
+
+{% endblock %}

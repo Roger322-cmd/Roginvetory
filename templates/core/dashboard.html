@@ -1,0 +1,70 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>{{ tracker.name }} Dashboard</h2>
+
+<div class="d-flex justify-content-end mb-3">
+    <label class="me-2 small">Currency:</label>
+    <select id="currency-switcher" class="form-select form-select-sm w-auto">
+        <option value="1" data-symbol="KES">KES</option>
+        <option value="0.0075" data-symbol="USD">USD</option>
+        <option value="0.0070" data-symbol="EUR">EUR</option>
+    </select>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <h6>Sales by category (quantity)</h6>
+        <canvas id="catQtyChart"></canvas>
+    </div>
+    <div class="col-md-6 mb-3">
+        <h6>Income by category</h6>
+        <canvas id="catIncomeChart"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <h6>Daily quantity (last 14 days)</h6>
+        <canvas id="dailyQtyChart"></canvas>
+    </div>
+    <div class="col-md-6 mb-3">
+        <h6>Daily income (last 14 days)</h6>
+        <canvas id="dailyIncomeChart"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <h6>Weekly quantity (last 8 weeks)</h6>
+        <canvas id="weeklyQtyChart"></canvas>
+    </div>
+    <div class="col-md-6 mb-3">
+        <h6>Weekly income (last 8 weeks)</h6>
+        <canvas id="weeklyIncomeChart"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <h6>Monthly quantity (this year)</h6>
+        <canvas id="monthlyQtyChart"></canvas>
+    </div>
+    <div class="col-md-6 mb-3">
+        <h6>Monthly income (this year)</h6>
+        <canvas id="monthlyIncomeChart"></canvas>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const categoryData = {{ category_data|safe }};
+    const dailyData = {{ daily|safe }};
+    const weeklyData = {{ weekly|safe }};
+    const monthlyData = {{ monthly|safe }};
+</script>
+<script src="{% static 'js/dashboard_charts.js' %}"></script>
+{% endblock %}
+

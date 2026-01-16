@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6" style="font: bolder; background: silver; border-radius: 1rem; border-color: black;">
+    <div class="card shadow-sm p-4">
+      <h3>Create account</h3>
+      <form method="post">{% csrf_token %}{{ form.as_p }}
+        <button class="btn btn-primary w-100">Sign up</button>
+      </form>
+      <p class="policy" style="font: smaller; color: blue;">By signing up you agree to our <a href="{% url 'privacy' %}">Privacy and Policy.</a> and <a href="{% url 'terms' %}">Terms and Conditions.</a> </p>
+      <p class="mt-3 text-center">Already have an account?<button class="btn btn-primary w-100"> <a href="{% url 'login' %}">Login</a></button></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

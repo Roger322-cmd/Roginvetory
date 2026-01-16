@@ -1,0 +1,279 @@
+body {
+    background: linear-gradient(45deg, #4a095a, #1d0d1b, #8b2c75);
+    color: black;
+    height: fit-content;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.card img {
+    object-fit: cover;
+    height: 180px;
+}
+.badge {
+        margin-right: 4px;
+}
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+.container {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    
+}
+
+.worker {
+    background: rgb(241, 241, 186);
+    color: #010216;
+    border-radius: 1.5rem;
+    font-size: smaller;
+    letter-spacing: normal;
+    max-height: fit-content;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.detail {
+    background: thistle;
+    color: #010216;
+}
+
+.row {
+    min-width: 100%;
+    max-width: 100%;
+
+}
+
+img.img-fluid.rounded {
+    max-height: 320px;
+    object-fit: cover;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+a {
+    animation: cubic-bezier(0.075, 0.82, 0.165, 1)
+}
+.navbar {
+    color: rgb(241, 28, 28);
+    min-width: 100%;
+    max-width: 100%;
+    background: linear-gradient(45deg, #c4b8e7, #8d8dd1, #fdfdfd);
+}
+
+.bottom-banner {
+    position: bottom;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color:#020618;
+    color: #fff;
+    padding-bottom: 0%;
+
+}
+
+.table {
+    border-collapse: collapse;
+    max-width: 100%;
+    min-width: 100%;
+    font-size: smaller;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    border: 1px solid #f3eaea;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: smaller;
+}
+.td, th {
+    padding: 8px;
+    text-align: left;
+}
+
+td {
+    background: silver;
+    color: #010216;
+}
+
+th {
+    background: #010216;
+    color: #eef5ff;
+}
+
+.btn-sm {
+    margin-right: 4px;
+}
+
+h1 {
+    place-content: center;
+    text-align: justify;
+}
+
+.h2 {
+    place-content: center;
+    text-align: center;
+}
+
+.about-page {
+    max-width: 900px;
+    margin: auto;
+    line-height: 1.7;
+    color: whitesmoke;
+
+}
+
+.about-page h1, .about-page h2 {
+    color: goldenrod; /* matches admin-style navbar */
+    margin-top: 20px;
+}
+
+.about-page ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-page ul li {
+    margin-bottom: 8px;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #010216;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    z-index: 9999;
+}
+
+.cookie-banner button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.cookie-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 10000;
+}
+
+.cookie-modal-content {
+    background: #fff;
+    color: #000;
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.close-modal {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-modal:hover {
+    color: #0C4B33;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #eef5ff;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+.btn-primary {
+  background-color: var(--primary-color);
+}
+.btn-success {
+  background-color: var(--success-color);
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Forms */
+form input, form select {
+  border-radius: 6px;
+}
+form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+}
+
+/* Alerts */
+.alert {
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* Pagination */
+.pagination .page-link {
+  border-radius: 6px;
+}
+.pagination .active .page-link {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Dashboard charts */
+canvas {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.home-hero {
+   background: linear-gradient(45deg, #1d0124, #2d0846, #5a0444);
+    color: yellow;
+    height: fit-content;
+    padding: 80px 20px;
+    border-radius: 12px;
+}
+
+.welcome-img {
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.login-img {
+    max-width: 100%;
+    min-width: 100%;
+}
+
+form {
+    background: silver;
+    max-width: 100%;
+    min-width: 100%;
+    color: #1d0124;
+}
+
+
+
+h3 {
+    text-align: center;
+}
+
+button {
+    color: #000;
+    background: #1d0124;
+}
+
+.btn-danger {
+    color: red;
+}

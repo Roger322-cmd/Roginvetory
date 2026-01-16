@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% block meta %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Stock and Sell",
+            "image": "https://www.gigsmarket.co.ke/static/images/logo.png",
+            "url": "https://www.gigsmarket.co.ke",
+            "telephone": "+254700000000",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Kakuma Refugee Camp",
+                "addressLocality": "Kakuma",
+                "addressRegion": "Turkana",
+                "postalCode": "30501",
+                "addressCountry": "KE"
+            },
+            "priceRange": "KES 500 - KES 50000",
+            "description": "Gigs_Market is Kenya’s trusted gig marketplace connecting clients with verified workers in education, home services, transport, events, tech, and wellness.",
+            "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+                ],
+                "opens": "00:00",
+                "closes": "23:59"
+            }
+            ],
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Rodger"
+            },
+            {
+                "@type": "Person",
+                "name": "Georgette"
+            }
+            ],
+            "sameAs": [
+                "https://www.facebook.com/gigsmarket",
+                "https://www.twitter.com/gigsmarket",
+                "https://www.instagram.com/gigsmarket"
+            ]
+            "@type": "Plumber",
+            "name": "Verified Plumbers on Gigs_Market",
+            "url": "https://www.gigsmarket.co.ke/workers/plumbers",
+            "areaServed": "Kenya",
+            "provider": {
+                "@type": "Organization",
+                "name": "Gigs_Market"
+            }
+        }
+        </script>
+        
+    {% endblock %}
+
+
+<html lang="en">
+        <head>
+            <!-- SEO Meta Tags -->
+            <title>About Stock and Sell | Trusted Stock Recorder</title>
+            <meta charset="utf-8">
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="Learn about Stock and Sell, Kenya’s trusted gig marketplace connecting clients with verified workers in education, home services, transport, events, tech, and wellness, e.t.c">
+            <meta name="keywords" content="Stock and Sell Hub, data analysis Kenya, Excel dashboards, inventory trackers, automation tools, SME solutions, data science community">
+            <meta name="author" content="Rodger">
+        
+            <!-- Open Graph Meta Tags -->
+            <meta property="og:title" content="About Stock and Sell | Empowering Africa Through Data">
+            <meta property="og:description" content="Discover how Stock and Sell  is helping people Get self employment easily anywhere. Founded by Rodger to support Self local Employers, across Kenya and other parts of the world.">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="https://SandS/about"> <!-- Replace with your actual domain -->
+            <meta property="og:image" content="https://Stock and Sell/static/images/logo1.png"> <!-- Replace with a real image -->
+            <meta property="og:site_name" content="Stock and Sell">
+        
+            <!-- Twitter Card Tags -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="About Stock and Sell | Trusted Stock Recorder">
+            <meta name="twitter:description" content="Discover how Stock and Sell is helping people to track their sales and store records. Founded by Rodger to support people to record their sales and inventory.">
+            <meta name="twitter:image" content="https://Stock and Sell/static/images/logo1.png"> <!-- Replace with a real image -->
+        
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        </head>
+        <body>
+            <div class="about-page">
+                <h1>About Stock and Sell</h1>
+                <p>
+                    <strong>Stock and Sell</strong> is Kenya’s trusted online platform that help people store there inventory records online and manage sales
+                    Starting from Saving inventory records to Sale dashboards  
+                </p>
+            
+                <h2>My Mission</h2>
+                <p>
+                    I empower local business and SMEs by giving them a platform here they can store their records online. 
+                    My mission is to <strong>Make sure SME expand by workin smart not hard</strong>
+                </p>
+            
+                <h2>Why Choose This</h2>
+                <ul>
+                    <li>Easy to inter your records in the Inventory</li>
+                    <li>You Get to Record sales by one click</li>
+                    <li>You get to download your dataset as CSV</li>
+                    <li>You get to See the Charts of your sales</li>
+                </ul>
+            
+                <h2>My Story</h2>
+                <p>
+                    Founded by Rodger, <strong>Stock and Sell</strong> grew out of a passion for
+                    empowering communities through technology. I believe every business owner deserves
+                    a chance to shine and never get to loose track of their Stock trend.
+                </p>
+            
+                <h2>Contact Me</h2>
+                <p>
+                    Have questions or feedback? Reach out at <a href="mtangerodger@gmail.com">Roger-Mtange</a> 
+                    or call <strong>+254 787397820</strong>.
+                </p>
+            </div>
+            <!--<div class="workers-lists">
+                <a href="{% url 'worker_list' %}">Browse workers</a>
+            </div>-->
+            <!-- Founder Section -->
+            <section class="bg-light py-5">
+                <div class="container">
+                    <h2 class="mb-4">Meet Rodger</h2>
+                    <div class="founder-post">
+                        <img src="{% static 'images/founder.jpg' %}" style="height: 70%; max-height: 70%; min-width: 100%; max-width: 100%;"
+                            alt="Our founder"
+                            class="founder-img">
+                        <h2 class="Our-founder"></h2>
+                        <p class="our-founder">
+                            <p>Rodger is a  data enthusiast with deep roots in Kakuma and Kakuma refugee camp. Driven by curiosity and a desire to uplift his community, he built Stock and Sell to make small business owners to track their sale and analyse the trend of the market. His journey began with Excel sheets and late-night learning — and evolved into a full-fledged platforms offering tools, services, and inspiration for others who share his passion.</p>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        
+            
+                
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+</html>
+{% endblock %}

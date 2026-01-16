@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="home-hero text-center">
+  <div class="text-center py-5">
+    <h1 class="display-4 fw-bold">Welcome to the Most Trusted Stock Recorder</h1>
+    <p class="lead mt-3">
+        Track your inventory, monitor sales, and manage your business with confidence.
+    </p>
+
+    <div class="mt-4">
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4" style="color: rgb(255, 251, 0);">
+           <img src="{% static 'images/get-started.jpeg' %}" alt="login" class="login-img">
+            <h2 class="stock-title">Get Started Today?   login</h2>
+        </a>
+    </div>
+    <div class="stock-post">
+        <a href="{% url 'register' %}">
+            <img src="{% static 'images/welcome.png' %}" alt="welcome" class="welcome-img">
+            <h2 class="stock-title"  style="color: rgb(255, 251, 0);">New here?   Create an account</h2>
+        </a>
+        <p class="welcome-description">
+         
+        </p>
+    </div>
+   </div>
+</div>
+{% endblock %}

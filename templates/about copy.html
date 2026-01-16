@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% block meta %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Gigs-Anywhere",
+            "image": "https://www.Gigs-anywhere.co.ke/static/images/logo.png",
+            "url": "https://www.Gigs-anywhere.co.ke",
+            "telephone": "+254700000000",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Kakuma Refugee Camp",
+                "addressLocality": "Kakuma",
+                "addressRegion": "Turkana",
+                "postalCode": "30501",
+                "addressCountry": "KE"
+            },
+            "priceRange": "KES 500 - KES 50000",
+            "description": "Gigs_Market is Kenya’s trusted gig marketplace connecting clients with verified workers in education, home services, transport, events, tech, and wellness.",
+            "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+                ],
+                "opens": "00:00",
+                "closes": "23:59"
+            }
+            ],
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Rodger"
+            },
+            {
+                "@type": "Person",
+                "name": "Georgette"
+            }
+            ],
+            "sameAs": [
+                "https://www.facebook.com/Gigs-anywhere",
+                "https://www.twitter.com/Gigs-anywhere",
+                "https://www.instagram.com/Gigs-anywhere"
+            ]
+            "@type": "Plumber",
+            "name": "Verified Plumbers on Gigs_Market",
+            "url": "https://www.Gigs-anywhere.co.ke/workers/plumbers",
+            "areaServed": "Kenya",
+            "provider": {
+                "@type": "Organization",
+                "name": "Gigs_Market"
+            }
+        }
+        </script>
+        
+    {% endblock %}
+
+
+<html lang="en">
+        <head>
+            <!-- SEO Meta Tags -->
+            <title>About Gigs-anywhere | Trusted Gig Marketplace</title>
+            <meta charset="utf-8">
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="Learn about Gigs_Anywhere, Kenya’s trusted gig marketplace connecting clients with verified workers in education, home services, transport, events, tech, and wellness, e.t.c">
+            <meta name="keywords" content="Gigs-anywhere Hub, data analysis Kenya, Excel dashboards, inventory trackers, automation tools, SME solutions, data science community">
+            <meta name="author" content="Rodger">
+        
+            <!-- Open Graph Meta Tags -->
+            <meta property="og:title" content="About Gigs-Anywhere | Empowering Africa Through Data">
+            <meta property="og:description" content="Discover how Gigs-anywhere  is helping people Get self employment easily anywhere. Founded by Rodger to support Self local Employers, across Kenya and other parts of the world.">
+            <meta property="og:type" content="website">
+            <meta property="og:url" content="https://Gigs-anywhere/about"> <!-- Replace with your actual domain -->
+            <meta property="og:image" content="https://Gigs-anywhere/static/images/logo1.png"> <!-- Replace with a real image -->
+            <meta property="og:site_name" content="Gigs-anywhere">
+        
+            <!-- Twitter Card Tags -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="About Gigs-anywhere | Trusted Gigs-anywheres">
+            <meta name="twitter:description" content="Discover how Gigs-anywhere is helping people to find gigs. Founded by Rodger to support people to get easy employment anywhere.">
+            <meta name="twitter:image" content="https://Gigs-anywhere/static/images/logo1.png"> <!-- Replace with a real image -->
+        
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        </head>
+        <body>
+            <div class="about-page">
+                <h1>About Gigs_Anywhere</h1>
+                <p>
+                    <strong>Gigs-anywhere</strong> is Kenya’s trusted online platform connecting clients with skilled workers 
+                    across categories like <em>Education, Home Services, Transport, Events, Tech, and Health & Wellness</em>. 
+                    Whether you need a private tutor in Eldoret, a plumber in Kakamega, or a boda rider for deliveries, 
+                    we make it simple to find, book, and pay safely.
+                </p>
+            
+                <h2>Our Mission</h2>
+                <p>
+                    We empower local hustlers, freelancers, and SMEs by giving them visibility and credibility online. 
+                    Our mission is to <strong>bridge the gap between clients and workers</strong> with verified profiles, 
+                    instant notifications, and transparent ratings.
+                </p>
+            
+                <h2>Why Choose Us</h2>
+                <ul>
+                    <li>✔ Verified worker profiles with ID and phone checks</li>
+                    <li>✔ Instant booking notifications via SMS and email</li>
+                    <li>✔ Clear payment rates and secure transactions</li>
+                    <li>✔ Ratings and reviews to build trust</li>
+                    <li>✔ Categories tailored to everyday needs in Kenya</li>
+                </ul>
+            
+                <h2>Our Story</h2>
+                <p>
+                    Founded by Rodger, <strong>Gigs-anywhere</strong> grew out of a passion for
+                    empowering communities through technology. I believe every skilled worker deserves
+                    a chance to shine and every client deserves reliable service.
+                </p>
+            
+                <h2>Contact Us</h2>
+                <p>
+                    Have questions or feedback? Reach out at <a href="mtangerodger@Gmail.com">info@Gigs-anywhere</a> 
+                    or call <strong>+254 787397820</strong>.
+                </p>
+            </div>
+            <div class="workers-lists">
+                <a href="{% url 'worker_list' %}">Browse workers</a>
+            </div>
+            <!-- Founder Section -->
+            <section class="bg-light py-5">
+                <div class="container">
+                    <h2 class="mb-4">Meet Rodger</h2>
+                    <div class="founder-post">
+                        <img src="{% static 'images/founder.jpg' %}" style="height: 70%; max-height: 70%; min-width: 100%; max-width: 100%;"
+                            alt="Our founder"
+                            class="founder-img">
+                        <h2 class="Our-founder"></h2>
+                        <p class="our-founder">
+                            <p>Rodger is a  data enthusiast with deep roots in Kakuma and Kakuma refugee camp. Driven by curiosity and a desire to uplift his community, he built Gigs-anywhere to make jobs accessible, Anywhere. His journey began with Excel sheets and late-night learning — and evolved into a full-fledged platforms offering tools, services, and inspiration for others who share his passion.</p>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        
+            
+                
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+</html>
+{% endblock %}

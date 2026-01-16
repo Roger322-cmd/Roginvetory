@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--<div class="card shadow-sm p-4">
+  <h3>Add product — {{ tracker.name }}</h3>
+  <form method="post">{% csrf_token %}{{ form.as_p }}
+    <button class="btn btn-primary">Add</button>
+  </form>
+</div>-->
+<label>Barcode (scan or type)</label>
+<input type="text" name="barcode" id="barcode-input" class="form-control" placeholder="Scan barcode or type manually">
+<div id="product-info"></div>
+<script>
+document.getElementById("scan-barcode").addEventListener("input", function() {
+    let code = this.value;
+
+    if (code.length > 3) {
+        fetch(`/api/get-product/${code}/`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.found) {
+                document.getElementById("product-info").innerHTML = `
+                    <h4>${data.name}</h4>
+                    <p>Category: ${data.category}</p>
+                    <p>Available: ${data.quantity}</p>
+                `;
+            } else {
+                document.getElementById("product-info").innerHTML = `<p class="text-danger">Product not found</p>`;
+            }
+        });
+    }
+});
+</script>
+<div class="card shadow-sm p-4">
+  <h3>Add product — {{ tracker.name }}</h3>
+  <form method="post">{% csrf_token %}{{ form.as_p }}
+    <button class="btn btn-primary">Add</button>
+  </form>
+</div>
+{% endblock %}

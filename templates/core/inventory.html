@@ -1,0 +1,250 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>{{ tracker.name }} Inventory</h2>
+
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <form method="get" class="d-flex gap-2">
+        <input type="text" name="search" id="inventory-search"
+                value="{{ search }}" class="form-control form-control-sm"
+                placeholder="Search name, category, barcode, or scan...">
+        <select name="sort" class="form-select form-select-sm">
+            <option value="name" {% if sort == "name" %}selected{% endif %}>Name</option>
+            <option value="quantity" {% if sort == "quantity" %}selected{% endif %}>Quantity</option>
+            <option value="price" {% if sort == "price" %}selected{% endif %}>Price</option>
+        </select>
+        <button class="btn btn-sm btn-primary" type="submit">Apply</button>
+    </form>
+
+    <div class="d-flex align-items-center gap-2">
+        <a href="{% url 'add_product' tracker.id %}" class="btn btn-sm btn-success">Add Product</a>
+    </div>
+</div>
+
+<div class="text-center mb-3">
+    <h5>Total Inventory Value:</h5>
+    <span id="inventory-total" class="money-field" data-original="{{ total_inventory_value }}">KES {{ total_inventory_value }}</span>
+</div>
+
+<div class="table-responsive">
+<table id="inventory-table" class="table table-striped table-sm">
+    <thead>
+        <tr>
+            <th data-sort="name">Name</th>
+            <th data-sort="category">Category</th>
+            <th data-sort="quantity">Quantity</th>
+            <th data-sort="price">Price</th>
+            <th>Units remaining</th>
+            <th>Barcode</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in page_obj %}
+        <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.category }}</td>
+            <td>{{ p.units_added }}</td>
+            <td class="money-field" data-original="{{ p.price|floatformat:2 }}">
+                KES {{ p.price|floatformat:2 }}
+            </td>
+            
+            <td>{{ p.units_remaining }}</td>
+            <td>{{ p.barcode }}</td>
+            <td>
+                <a href="{% url 'update_product' p.id %}" class="btn btn-warning btn-sm">Update</a>
+
+
+            </td>
+            <td>
+                <a href="{% url 'print_barcode' p.id %}" class="btn btn-secondary btn-sm">Print barcode</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7">No products yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<nav>
+    <ul class="pagination pagination-sm">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ page_obj.previous_page_number }}&search={{ search }}&sort={{ sort }}">Previous</a>
+        </li>
+        {% endif %}
+        <li class="page-item disabled">
+            <span class="page-link">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+        </li>
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+                href="?page={{ page_obj.next_page_number }}&search={{ search }}&sort={{ sort }}">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/inventory_tables.js' %}"></script>
+{% endblock %}
+
+
+<!--
+
+{% load static %}
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Inventory — {{ tracker.name }}</h3>
+  <select id="currency-switcher" class="form-select w-auto">
+    <option value="1">KES</option>
+    <option value="0.0065">USD</option>
+    <option value="0.0060">EUR</option>
+    <option value="0.85">TZS</option>
+  </select>
+  <input type="text" id="inventory-search" autofocus placeholder="Scan barcode or type...">
+  <!--<input type="text" id="inventory-search" class="form-control mb-3" placeholder="Search product name, category, or barcode">-->
+  <!--<div>
+    <a href="{% url 'add_product' tracker.id %}" class="btn btn-primary">Add product</a>
+    <a href="{% url 'sell_product' tracker.id %}" class="btn btn-success">Sell</a>
+  </div>
+  <form method="GET">
+    <input type="text" name="search" value="{{ search }}" class="form-control" placeholder="Search...">
+  </form>
+
+</div>
+<div class="card shadow-sm mt-3 p-3">
+  <!--<table class="table table-striped table-hover">-->
+  <!--<table id="inventory-table" class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Product Id</th>
+        <th><a href="?sort=name">Name ↑</a></th>
+        <th>Category</th>
+        <th>Added date</th>
+        <th><a href="?sort=price">Price ↑</a></th>
+        <th><a href="?sort=quantity">Qty ↑</a>Units added</th>
+        <th>Total earnings if all sold</th>
+        <th>Units remaining</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in products %}
+      <tr>
+        <td>{{ p.product_id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.category }}</td>
+        <td>{{ p.added_date }}</td>
+        <td class="money-field" data-base="{{ sale.total_amount }}">{{ p.price }}</td>
+        <td>{{ p.units_added }}</td>
+        <!--<td>{{ p.total_earnings_if_all_sold }}</td>-->
+        <!--<td class="money-field" data-base="{{ sale.total_amount }}">{{ p.total_earnings_if_all_sold }}</td>
+        <td>{{ p.units_remaining }}</td>
+        <td>{{ product.barcode }}</td>
+        <td><a href="{% url 'update_product' p.id %}" class="btn btn-warning btn-sm">Update</a></td>
+        <td><a href="{% url 'print_barcode' p.id %}" class="btn btn-secondary">Print Barcode Label</a></td>
+        <!--<td class="money-field" data-base="{{ sale.total_amount }}">
+          {{ sale.total_amount }}-->
+        <!--</td>
+
+      </tr>
+      {% empty %}
+      <tr><td colspan="8" class="text-center">No products yet</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'export_inventory_csv' tracker.id %}" class="btn btn-outline-primary">Export CSV</a>
+</div>
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}&search={{ search }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}&search={{ search }}">Next</a>
+    {% endif %}
+</div>
+
+<script>
+  document.getElementById("currency-switcher").addEventListener("change", function() {
+    let rate = parseFloat(this.value);
+
+    // Update income charts
+    catIncomeChart.data.datasets[0].data = catIncomeData.map(v => v * rate);
+    dayIncomeChart.data.datasets[0].data = dayIncomeData.map(v => v * rate);
+    weekIncomeChart.data.datasets[0].data = weekIncomeData.map(v => v * rate);
+    monthIncomeChart.data.datasets[0].data = monthIncomeData.map(v => v * rate);
+
+    catIncomeChart.update();
+    dayIncomeChart.update();
+    weekIncomeChart.update();
+    monthIncomeChart.update();
+
+    // Update dashboard cards
+    document.querySelectorAll(".money-field").forEach(el => {
+        let base = parseFloat(el.dataset.base);
+        el.innerText = (base * rate).toFixed(2);
+    });
+  });
+
+</script>
+<script>
+document.getElementById("inventory-search").addEventListener("input", function() {
+    let filter = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#inventory-table tbody tr");
+
+    rows.forEach(row => {
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? "" : "none";
+    });
+});
+
+function highlight(text, search) {
+    if (!search) return text;
+    let regex = new RegExp(`(${search})`, "gi");
+    return text.replace(regex, "<mark>$1</mark>");
+}
+
+document.getElementById("inventory-search").addEventListener("input", function() {
+    let search = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#inventory-table tbody tr");
+
+    rows.forEach(row => {
+        let cells = row.querySelectorAll("td");
+        let rowText = row.innerText.toLowerCase();
+
+        if (rowText.includes(search)) {
+            row.style.display = "";
+            cells.forEach(cell => {
+                cell.innerHTML = highlight(cell.innerText, search);
+            });
+        } else {
+            row.style.display = "none";
+        }
+    });
+});
+
+document.getElementById("inventory-search").addEventListener("input", function() {
+    if (this.value.length > 6) {
+        this.dispatchEvent(new Event("input"));
+    }
+});
+
+</script>
+<script src="{% static 'js/inventory.js' %}"></script>
+<script src="{% static 'js/search.js' %}"></script>
+<script src="{% static 'js/sorting.js' %}"></script>
+<script src="{% static 'js/voice.js' %}"></script>
+<script src="{% static 'js/autocomplete.js' %}"></script>
+<script src="{% static 'js/barcode.js' %}"></script>
+
+-->
+
+
